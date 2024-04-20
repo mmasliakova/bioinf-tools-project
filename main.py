@@ -1,3 +1,6 @@
 import streamlit as st
 
-st.write("Database_name", st.secrets["connections.bio-tools_db"]["database"])
+conn = st.connection('bio-tools_db', type='sql')
+
+df = conn.query('select * from platforms_id')
+st.dataframe(df)
